@@ -381,7 +381,13 @@ with col2:
         st.markdown("##### Confidence across all digits")
         st.plotly_chart(build_confidence_chart(preds), use_container_width=True)
     else:
-        st.info("Draw a digit or upload an image, then click **Predict** to see results here.")
+        st.markdown(
+            '<div style="background: rgba(127, 90, 240, 0.12); border: 1px solid rgba(127, 90, 240, 0.3); '
+            'border-radius: 12px; padding: 1rem; color: #F1F1F6;">'
+            'Draw a digit or upload an image, then click <strong>Predict</strong> to see results here.'
+            '</div>',
+            unsafe_allow_html=True,
+        )
 
     st.markdown('</div>', unsafe_allow_html=True)
 
