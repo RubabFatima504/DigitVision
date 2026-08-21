@@ -144,18 +144,17 @@ st.markdown("""
         color: #C9C9DC !important;
     }
 
-    /* Canvas wrapper: crop away the extra whitespace the component iframe adds */
-    .canvas-wrap {
-        display: inline-block;
-        width: 300px;
-        height: 300px;
-        overflow: hidden;
-        border-radius: 14px;
-        border: 1px solid rgba(255,255,255,0.15);
-        background: #000000;
+    /* Force the canvas component's iframe to exactly match the requested
+       drawing size, instead of stretching to the full column width. */
+    [data-testid="stCustomComponentV1"] {
+        width: 300px !important;
+        max-width: 300px !important;
     }
-    .canvas-wrap iframe {
+    [data-testid="stCustomComponentV1"] iframe {
+        width: 300px !important;
+        height: 300px !important;
         border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.15) !important;
     }
 
     .stButton>button {
@@ -370,7 +369,6 @@ with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     if input_mode == "✍️ Draw a digit":
         st.markdown('<div class="card-title">✍️ Draw here</div>', unsafe_allow_html=True)
-        st.markdown('<div class="canvas-wrap">', unsafe_allow_html=True)
         canvas_result = st_canvas(
             fill_color="rgba(255, 255, 255, 1)",
             stroke_width=stroke_width,
@@ -381,7 +379,6 @@ with col1:
             drawing_mode="freedraw",
             key="canvas",
         )
-        st.markdown('</div>', unsafe_allow_html=True)
         predict_clicked = st.button("🔮 Predict")
         clear_hint = st.caption("Use the toolbar (bottom-left of canvas) to erase or undo.")
 
