@@ -29,6 +29,18 @@ st.markdown("""
     .main {
         background: linear-gradient(180deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     }
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(180deg, #0f0c29 0%, #302b63 50%, #24243e 100%) !important;
+    }
+    [data-testid="stMain"] {
+        background: transparent !important;
+    }
+    [data-testid="stHeader"] {
+        background: transparent !important;
+    }
+    .block-container {
+        color: #F1F1F6 !important;
+    }
 
     /* Hero header */
     .hero-title {
@@ -55,13 +67,14 @@ st.markdown("""
 
     /* Card container */
     .card {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 18px;
         padding: 1.5rem;
         backdrop-filter: blur(10px);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         margin-bottom: 1rem;
+        color: #F1F1F6;
     }
 
     .card-title {
