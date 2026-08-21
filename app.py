@@ -134,6 +134,29 @@ st.markdown("""
         background: linear-gradient(180deg, #1a1730 0%, #24243e 100%);
         border-right: 1px solid rgba(255,255,255,0.06);
     }
+    section[data-testid="stSidebar"] * {
+        color: #E9E9F5 !important;
+    }
+    section[data-testid="stSidebar"] .metric-pill .value {
+        color: #FFFFFF !important;
+    }
+    section[data-testid="stSidebar"] .metric-pill .label {
+        color: #C9C9DC !important;
+    }
+
+    /* Canvas wrapper: crop away the extra whitespace the component iframe adds */
+    .canvas-wrap {
+        display: inline-block;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.15);
+        background: #000000;
+    }
+    .canvas-wrap iframe {
+        border-radius: 14px;
+    }
 
     .stButton>button {
         background: linear-gradient(135deg, #7F5AF0, #2CB1BC);
@@ -347,16 +370,18 @@ with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     if input_mode == "✍️ Draw a digit":
         st.markdown('<div class="card-title">✍️ Draw here</div>', unsafe_allow_html=True)
+        st.markdown('<div class="canvas-wrap">', unsafe_allow_html=True)
         canvas_result = st_canvas(
             fill_color="rgba(255, 255, 255, 1)",
             stroke_width=stroke_width,
             stroke_color="#FFFFFF",
             background_color="#000000",
-            height=280,
-            width=280,
+            height=290,
+            width=290,
             drawing_mode="freedraw",
             key="canvas",
         )
+        st.markdown('</div>', unsafe_allow_html=True)
         predict_clicked = st.button("🔮 Predict")
         clear_hint = st.caption("Use the toolbar (bottom-left of canvas) to erase or undo.")
 
